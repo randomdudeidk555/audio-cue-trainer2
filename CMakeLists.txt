@@ -5,13 +5,14 @@ project(AudioCueTrainer VERSION 1.0.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Geode REQUIRED)
+list(APPEND CMAKE_MODULE_PATH $ENV{GEODE_SDK})
+include(GeodeFile)
 
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
     ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
 )
 
-add_geode_mod(
+setup_geode_mod(
     ${PROJECT_NAME}
     SOURCES ${SOURCES}
 )
