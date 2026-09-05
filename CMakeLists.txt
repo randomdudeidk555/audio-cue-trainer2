@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.13)
 
 project(randomdudeidk555.audio_cue_trainer VERSION 1.0.0 LANGUAGES CXX)
 
+# Add Geode SDK to CMake module path
+list(APPEND CMAKE_PREFIX_PATH "$ENV{GEODE_SDK_PATH}")
+list(APPEND CMAKE_MODULE_PATH "$ENV{GEODE_SDK_PATH}/cmake")
 # Use a fixed C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
