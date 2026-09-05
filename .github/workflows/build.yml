@@ -1,5 +1,13 @@
-name: Build
-on: [push, workflow_dispatch]
+name: Build Geode Mod
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
 jobs:
   build:
-    uses: geode-sdk/geode/.github/workflows/build-mod.yml@main
+    uses: geode-sdk/cli/.github/workflows/build2.yml@main
+    with:
+      sdk: v3.0.0
