@@ -1,28 +1,16 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.13)
 
-project(AudioCueTrainer VERSION 1.0.0 LANGUAGES CXX)
+# 1. Název projektu MUSÍ 1:1 odpovídat poli "id" v mod.json
+project(randomdudeidk555.audio_cue_trainer VERSION 1.0.0)
 
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+# 2. Vyhledání Geode SDK
+find_package(Geode REQUIRED)
 
-file(GLOB_RECURSE SOURCES
-    CONFIGURE_DEPENDS
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
-)
+# 3. Načtení všech zdrojových C++ souborů ve složce src
+file(GLOB_RECURSE SOURCES "src/*.cpp" "src/*.hpp")
 
-if (NOT DEFINED ENV{GEODE_SDK})
-    message(FATAL_ERROR
-        "GEODE_SDK is not set. Please install/setup the Geode SDK."
-    )
-endif()
+# 4. Vytvoření knihovny (targetu) se stejným názvem jako ID módu
+add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
-message(STATUS "Found Geode SDK: $ENV{GEODE_SDK}")
-
-add_subdirectory(
-    $ENV{GEODE_SDK}
-    ${CMAKE_CURRENT_BINARY_DIR}/geode
-)
-
-setup_geode_mod(${PROJECT_NAME}
-    SOURCES ${SOURCES}
-)
+# 5. Nastavení Geode módu (propojí knihovnu s Geode SDK a mod.json)
+setup_geode_mod(${PROJECT_NAME})
