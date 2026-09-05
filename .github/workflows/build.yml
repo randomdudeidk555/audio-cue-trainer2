@@ -8,6 +8,4 @@ on:
 
 jobs:
   build:
-    uses: geode-sdk/cli/.github/workflows/build2.yml@main
-    with:
-      sdk: v3.0.0
+    uses: geode-sdk/build-geode-mod/.github/workflows/build.yml@main
