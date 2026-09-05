@@ -1,0 +1,47 @@
+{
+    "geode": "3.9.1",
+    "gd": {
+        "win": "2.2074",
+        "android": "2.2074",
+        "mac": "2.2074"
+    },
+    "id": "com.yourname.audiocuetrainer",
+    "name": "Audio Cue Trainer",
+    "version": "v1.0.0",
+    "developer": "YourName",
+    "description": "Train click patterns with audio cues instead of visual timing. Plays a short beep before each scheduled click - you always perform the click yourself.",
+    "repository": "https://github.com/yourname/audio-cue-trainer",
+    "tags": ["gameplay", "utility", "practice", "training"],
+    "settings": {
+        "enabled": {
+            "name": "Enable Audio Cues",
+            "description": "Master on/off switch for cue playback. When off, patterns still load and the info panel still works, but no sound plays.",
+            "type": "bool",
+            "default": true
+        },
+        "lead-time-ms": {
+            "name": "Lead Time (ms)",
+            "description": "How many milliseconds BEFORE the scheduled click time the cue sound plays.",
+            "type": "int",
+            "default": 170,
+            "min": 0,
+            "max": 2000
+        },
+        "latency-comp-ms": {
+            "name": "Audio Latency Compensation (ms)",
+            "description": "Extra offset to correct for your speakers/headphones output latency. Positive = fire the cue earlier. Negative = fire later.",
+            "type": "int",
+            "default": 0,
+            "min": -500,
+            "max": 500
+        },
+        "cue-volume": {
+            "name": "Cue Volume",
+            "description": "Volume multiplier for the click cue, relative to the game's current SFX volume. 1.0 = same as SFX volume.",
+            "type": "float",
+            "default": 1.0,
+            "min": 0.0,
+            "max": 2.0
+        }
+    }
+}
