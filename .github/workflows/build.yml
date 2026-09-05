@@ -24,6 +24,8 @@ jobs:
 
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
+    env:
+      GEODE_SDK_PATH: ${{ github.workspace }}/geode-sdk
 
     steps:
       - uses: actions/checkout@v4
